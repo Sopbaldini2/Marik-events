@@ -1,0 +1,341 @@
+:root{
+	--gold: gold;	
+    --light-gold: rgb(255, 228, 74); /* Nuovo colore gold chiaro */
+    --background-color: #f9f9f9;
+    --primary-color: #fff;
+    --text-color: #000;
+    --box-size: 150px;
+    --gap: 30px; 
+}
+
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+	outline: none;
+	border: none;
+	text-decoration: none;
+	transition: .2s linear;
+}
+
+html{
+	font-size: 65%;
+	scroll-behavior: smooth;
+	scroll-padding-top: 6rem;
+	overflow-x: hidden;
+}
+
+
+header{
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	background: rgb(0, 0, 0);
+	padding: 2rem 9%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	z-index:1000 ;
+	box-shadow: 0 .5rem 1rem rgba(0,0,0.1);
+}
+
+header .logo{
+	font-size: 3rem;
+	color: #fff;
+	font-weight: bolder;	
+}
+
+header .logo span{
+	color: var(--gold);
+}
+
+header .navbar a{
+	font-size: 2rem;
+	padding: 0 1.5rem;
+	color: #fff;
+}
+
+header .navbar a:hover{
+	color: var(--gold);
+}
+
+header .icons a{
+	font-size: 2.5rem;
+	color: #fff;
+	cursor: pointer;
+	margin-right: 1.5rem;
+}
+
+header .icons a:hover{
+	color: var(--gold);
+}
+
+header #toggler{
+	display: none;
+}
+
+header .fa-bars{
+	font-size: 3rem;
+	color: #fff;
+	border-radius: .5rem;
+	padding: .5rem 1.5rem;
+	cursor: pointer;
+	border: .1rem solid rgb(255, 255, 255);
+	display: none;
+}
+
+/* Dropdown per admin nell'header */
+
+header .icons .dropdown {
+    position: relative;
+    display: inline-block;
+    margin-right: 1.5rem;
+}
+
+/* Stile per l'icona dell'utente nel dropdown */
+
+header .icons .dropdown .user-icon {
+    font-size: 2.5rem;
+    color: #fff;
+    cursor: pointer;
+    margin-right: 1.5rem;
+    margin-bottom: 0.5rem; /* Aggiungi spazio sotto l'icona */
+}
+
+/* Cambia il colore dell'icona al passaggio del mouse */
+
+header .icons .dropdown .user-icon:hover {
+    color: var(--gold);
+}
+
+/* Stile per il contenitore del nome utente */
+
+header .icons .dropdown .user-info {
+    text-align: center;
+    font-size: 2.7rem; /* Dimensione più grande per il nome utente */
+    font-style: italic; /* Stile italico per il nome utente */
+    margin-bottom: 1.5rem; /* Spazio sotto il nome utente */
+}
+
+/* Linea separatoria sotto il nome utente */
+
+header .icons .dropdown .user-info::after {
+    content: '';
+    display: block;
+    width: 50%;
+    margin: 0.5rem auto;
+    border-bottom: 1px solid #ccc; /* Colore e stile della linea */
+}
+
+/* Stile per il contenitore delle opzioni nel dropdown */
+
+header .icons .dropdown .dropdown-content {
+    position: absolute;
+    background-color: #fff;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    border-radius: 0.5rem;
+    padding: 0.5rem 0;
+    top: calc(100% + 1rem); /* Posiziona il dropdown sotto l'icona */
+    left: 50%; /* Centra orizzontalmente il dropdown */
+    transform: translateX(-50%);
+    transition: opacity 0.3s ease; /* Aggiungi transizione per l'opacità */
+    opacity: 0;
+    text-align: center;
+}
+
+/* Stile per le opzioni nel dropdown */
+
+header .icons .dropdown-content a {
+    color: #333;
+    padding: 0.8rem 1rem; /* Padding per le opzioni */
+    display: block;
+    text-align: center;
+    text-decoration: none; /* Rimuovi sottolineatura dai link */
+    font-size: 1.2rem; /* Dimensione più piccola per le opzioni */
+}
+
+/* Cambia il colore di sfondo e testo al passaggio del mouse sui link */
+
+header .icons .dropdown-content a:hover {
+    background-color: var(--gold);
+    color: #fff;
+}
+
+/* Mostra il dropdown quando l'icona è in hover */
+
+/* Mostra il dropdown quando l'icona è in hover o il dropdown è in hover */
+header .icons .dropdown:hover .dropdown-content,
+header .icons .dropdown-content:hover {
+    display: block;
+    opacity: 1;
+}
+
+/* Imposta una larghezza fissa per il dropdown content */
+header .icons .dropdown-content {
+    width: 200px; /* Imposta una larghezza fissa */
+}
+
+
+ body {
+    font-family: Arial, sans-serif;
+    background-image: url('/images/banner2.png'); /* Aggiungi l'URL dell'immagine */
+    background-size: cover; /* Copertura dell'immagine su tutta la pagina */
+    background-repeat: no-repeat; /* Nessuna ripetizione dell'immagine */
+    background-attachment: fixed; /* L'immagine rimane fissa durante lo scroll */
+    margin: 0;
+    padding: 0;
+}
+
+.white-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20vh;
+    margin-top: 300px;
+}
+
+.section {
+    text-align: center;
+    margin-bottom: 30px;
+    margin-top: 10px;
+}
+
+.section h1 {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    color: var(--text-color);
+}
+
+.container {
+    background-color: var(--primary-color);
+    padding: 20px;
+    border-radius: 80px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    background-color: rgba(255, 255, 255, 0.2); 
+}
+
+
+.link-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.link-container a {
+    text-decoration: none;
+    color: var(--text-color);
+    background-color: var(--gold);
+    padding: 20px;
+    border-radius: 1000px;
+    margin-bottom:var(--gap); 
+    margin-right: 20px;
+    font-weight: bold; 
+    width: 200px; 
+    text-align: center; 
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.link-container a:hover {
+    background-color: var(--light-gold);
+    transform: scale(1.05);
+}
+
+
+
+
+
+
+/*media queries*/
+
+@media (max-width: 991px) {
+	html{
+	font-size: 55%;
+	}
+	
+	header{
+		padding: 2rem;
+		
+	}
+	
+	section{
+		padding: 2rem;
+	}
+	
+	.home{
+		background-position: left;
+	}
+}
+
+@media (max-width: 768px) {
+	header .fa-bars{
+		display: block;
+	}
+	
+	header .navbar{
+		position: absolute;
+		top: 100%;
+		left: 0;
+		right: 0;
+		background: #eee;
+		border-top: .1rem solid rgb(255, 255, 255);
+		clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+	}
+	
+	header #toggler:checked ~ .navbar {
+		clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+	}
+	
+	header .navbar a{
+		margin: 1.5rem;
+		padding: 1.5rem;
+		background: #333;
+		border: .1rem solid rgb(255, 255, 255);
+		display: block;
+	}
+	
+	:root {
+        --box-size: 120px; /* Riduci la dimensione del box (già presente) */
+        --gap: 15px; /* Riduci lo spazio tra i pulsanti (già presente) */
+    }
+
+    .link-container a {
+        padding: 15px; /* Riduci il padding (già presente) */
+        width: 150px; /* Riduci la larghezza (già presente) */
+        font-size: 1.2rem; /* Aggiungi questa nuova regola per aumentare la dimensione del testo */
+    }
+    
+    .home .content h3{
+		font-size: 5rem;
+	}
+	
+	.home .content span{
+		font-size: 2.5rem;
+	}	
+	
+	.icons-container .icons h3{
+	    font-size: 2rem;
+    }
+
+    .icons-container .icons span{
+	    font-size: 1.7rem;
+    }
+}
+
+@media (max-width: 450px) {
+	html{
+	font-size: 50%;
+	}
+	
+	.heading{
+		font-size: 3rem;
+	}
+	.link-container a {
+        padding: 12px; /* Riduci ulteriormente il padding per adattarsi a schermi molto piccoli */
+        width: 130px; /* Riduci la larghezza per adattarsi a schermi molto piccoli */
+        font-size: 1rem; /* Riduci la dimensione del font per adattarsi a schermi molto piccoli */
+    }
+}

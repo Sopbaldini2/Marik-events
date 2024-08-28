@@ -32,7 +32,6 @@ public class Recensione {
 	@ManyToOne
 	private Evento evento;
 	
-	@ManyToOne
 	private String cliente; 
 	
 	
