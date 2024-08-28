@@ -28,12 +28,12 @@ public class AuthenticationController {
     @Autowired
 	private AmministratoreService userService;
 	
-	@GetMapping(value = "/register") 
+	/*@GetMapping(value = "/register") 
 	public String showRegisterForm (Model model) {
 		model.addAttribute("user", new Amministratore());
 		model.addAttribute("credentials", new Credentials());
 		return "formRegisterUser";
-	}
+	}*/
 	
 	@GetMapping(value = "/login") 
 	public String showLoginForm (Model model) {

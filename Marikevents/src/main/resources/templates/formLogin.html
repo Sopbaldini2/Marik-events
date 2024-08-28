@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Login - Agenzia Eventi</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+	<link rel="stylesheet" href="/css/login.css">
+	<link rel="shortcut icon" href="/images/iconaM.png " type="image/x-icon">
+
+</head>
+
+<body>
+
+	<div>
+		<a sec:authorize="isAuthenticated()" href="/success" class="logo"> Marik'<span>Events</span></a>
+		<a sec:authorize="!isAuthenticated()" href="/" class="logo"> Marik'<span>Events</span></a>
+	</div>
+
+	<div class="wrapper">
+		<form th:action="@{/login}" method="POST">
+			<h1>Login</h1>
+			<div class="input-box">
+				<input name="username" type="text" placeholder="Username" required>
+			</div>
+
+			<div class="input-box">
+				<input name="password" type="password" placeholder="Password" required>
+			</div>
+
+			<!--<div class="remember-forgot">
+				<label for="remember"><input type="checkbox" id="remember">Remember me</label>
+				<a href="/forgot-password">Forgot password?</a>
+			</div>-->
+
+			<button type="submit" class="btn">Login</button>
+			<br>
+			<div class="register-link">
+				<p>Don't have an account? <a href="/register">Register</a></p>
+			</div>
+			<br>
+			<!-- Sezione accesso tramite social -->
+			<!--<div class="social-login">
+				<p>Oppure:</p>
+				<br>
+				<div class="social-buttons">
+					<a href="/oauth2/authorization/google" class="btn google-btn">
+                    <i class="fab fa-google"></i> Google
+                </a>
+				<br>
+				<button title="Log In with Google" type="submit" class="sign-in_google">
+					<span><a href="/oauth2/authorization/google"> Google</a></span>
+				</button>
+			</div>-->
+		</form>
+	</div>
+</body>
+
+</html>
