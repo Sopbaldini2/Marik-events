@@ -25,4 +25,5 @@ public class ImageService {
 	public Image findById(Long imageId) {
 		return imageRepository.findById(imageId).get();
 	}
+
 }

@@ -1,6 +1,8 @@
 package it.uniroma3.siw.service;
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
@@ -43,4 +45,9 @@ public class ServizioService {
 			servizioRepository.deleteReferencesInEventiServizi(id);
 			servizioRepository.delete(Servizio);
 		}
+
+	public List<Servizio> findAllById(List<Long> serviziIds) {
+		return (List<Servizio>) servizioRepository.findAllById(serviziIds);
+	}
+
 }

@@ -1,5 +1,6 @@
 package it.uniroma3.siw.controller;
 
+import java.io.IOException;
 //import java.security.Principal;
 //import java.time.LocalDate;
 import java.util.ArrayList;
@@ -16,11 +17,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 //import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import it.uniroma3.siw.controller.validator.EventoValidator;
 //import it.uniroma3.siw.model.Cliente;
 import it.uniroma3.siw.model.Evento;
+import it.uniroma3.siw.model.Image;
 //import it.uniroma3.siw.model.Recensione;
 import it.uniroma3.siw.model.Servizio;
 //import it.uniroma3.siw.service.ClienteService;
@@ -63,7 +67,7 @@ public class EventoController {
 		return "admin/formUpdateEvento.html";
 	}
 
-	@PostMapping("/admin/evento")
+	/*@PostMapping("/admin/evento")
 	public String newEvento(@Valid @ModelAttribute("evento") Evento evento, BindingResult bindingResult, Model model) {
 		
 		this.eventoValidator.validate(evento, bindingResult);
@@ -74,7 +78,43 @@ public class EventoController {
 		} else {
 			return "admin/formNewEvento.html"; 
 		}
-	}
+	}*/
+	
+	@PostMapping("/admin/evento")
+	public String newEvento(@Valid @ModelAttribute("evento") Evento evento, 
+	                        BindingResult bindingResult, 
+	                        @RequestParam("imageFile") MultipartFile imageFile,
+	                        @RequestParam("serviziIds") List<Long> serviziIds, 
+	                        Model model) {
+
+	    this.eventoValidator.validate(evento, bindingResult);
+
+	    if (!bindingResult.hasErrors()) {
+	        // Gestione immagine
+	        if (!imageFile.isEmpty()) {
+	            try {
+	                Image image = new Image();
+	                image.setBytes(imageFile.getBytes());
+	                evento.setImageE(image);
+	            } catch (IOException e) {
+	                bindingResult.rejectValue("imageE", "error.image", "Errore durante il caricamento dell'immagine.");
+	                return "admin/formNewEvento.html";
+	            }
+	        }
+
+	        // Associazione dei servizi
+	        List<Servizio> servizi = this.servizioService.findAllById(serviziIds);
+	        evento.setServizi(servizi);
+
+	        // Salvataggio dell'evento
+	        this.eventoService.save(evento); 
+	        model.addAttribute("evento", evento);
+	        return "redirect:/evento/" + evento.getId();
+	    } else {
+	        model.addAttribute("servizi", this.servizioService.findAll());
+	        return "admin/formNewEvento.html"; 
+	    }
+	} 
 
 	@GetMapping("/evento/{id}")
 	public String getEvento(@PathVariable("id") Long id, Model model) {
