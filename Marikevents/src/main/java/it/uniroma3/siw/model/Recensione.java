@@ -15,12 +15,15 @@ import jakarta.validation.constraints.NotNull;
 
 @Entity
 public class Recensione {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+	
 	@Column(columnDefinition = "TEXT")
 	@NotBlank(message = "{recensione.commento.notblank}")
 	private String commento;
+	
 	@NotNull
 	@Min(0)
 	@Max(5)
@@ -30,7 +33,7 @@ public class Recensione {
 	private Evento evento;
 	
 	@ManyToOne
-	private String cliente;
+	private String cliente; 
 	
 	
 	public Evento getEvento() {

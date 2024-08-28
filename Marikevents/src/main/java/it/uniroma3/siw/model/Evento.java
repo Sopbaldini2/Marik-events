@@ -6,13 +6,16 @@ import java.util.Objects;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -32,8 +35,9 @@ public class Evento {
 	private String descrizione;
 	@NotBlank(message = "{evento.tipologia.notblank}")
 	private String tipologia;
-	@NotBlank(message = "{evento.image.notblank}")
-	private String image;
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "image_id", referencedColumnName = "id")
+	private Image imageE;
 	@NotNull(message = "{evento.data.notnull}")
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate data;
@@ -116,10 +120,10 @@ public class Evento {
 	public void setDescrizione(String descrizione) {
 		this.descrizione = descrizione;
 	}
-	public String getImage() {
-		return image;
+	public Image getImageE() {
+		return imageE;
 	}
-	public void setImage(String image) {
-		this.image = image;
+	public void setImageE(Image imageE) {
+		this.imageE = imageE;
 	}
 }

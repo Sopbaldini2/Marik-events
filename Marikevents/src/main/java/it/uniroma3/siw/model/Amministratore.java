@@ -9,17 +9,19 @@ import jakarta.validation.constraints.NotBlank;
 
 @Entity
 public class Amministratore {
+	
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 	
 	@NotBlank
 	private String nome;
+	
 	@NotBlank
 	private String cognome;
+	
 	@NotBlank
 	private String email;
-	
 	
 	@Override
 	public int hashCode() {

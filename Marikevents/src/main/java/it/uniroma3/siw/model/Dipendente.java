@@ -6,6 +6,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.validation.constraints.NotBlank;
 
 @Entity
@@ -18,9 +20,11 @@ public class Dipendente {
 	@NotBlank(message = "{dipendente.cognome.notblank}")
 	private String cognome;
 	@NotBlank(message = "{dipendente.ruolo.notblank}")
-	private String ruolo;
-	@NotBlank(message = "{dipendente.image.notblank}")
-	private String image;
+	private String ruolo;	
+	@OneToOne
+	@JoinColumn(name = "image_id", referencedColumnName = "id")
+	private Image image;
+
 	
 	@Override
 	public int hashCode() {
@@ -73,11 +77,11 @@ public class Dipendente {
 		this.ruolo = ruolo;
 	}
 	
-	public String getImage() {
+	public Image getImage() {
 		return image;
 	}
-
-	public void setImage(String image) {
+	
+	public void setImage(Image image) {
 		this.image = image;
 	}
 	

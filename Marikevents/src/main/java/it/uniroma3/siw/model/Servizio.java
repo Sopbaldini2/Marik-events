@@ -8,7 +8,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToOne;
 //import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
@@ -27,8 +29,9 @@ public class Servizio {
 	@NotNull
 	@Min(10)
 	private Float prezzo;
-	@NotBlank(message = "{servizio.image.notblank}")
-	private String image;
+	@OneToOne
+	@JoinColumn(name = "image_id", referencedColumnName = "id")
+	private Image imageS;
 	@NotBlank(message = "{servizio.video.notblank}")
 	private String video;
 	
@@ -95,12 +98,12 @@ public class Servizio {
 		this.prezzo = prezzo;
 	}
 
-	public String getImage() {
-		return image;
+	public Image getImageS() {
+		return imageS;
 	}
-
-	public void setImage(String image) {
-		this.image = image;
+	
+	public void setImageS(Image imageS) {
+		this.imageS = imageS;
 	}
 	
 	public String getVideo() {
