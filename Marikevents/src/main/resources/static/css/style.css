@@ -247,8 +247,8 @@ header .icons .dropdown-content {
     width: 200px; /* Imposta una larghezza fissa */
 }
 
-
 /*About*/
+
 .about {
     margin-top: 50px; /* Modifica questo valore in base alla distanza desiderata dalla parte superiore della pagina */
 }
@@ -305,42 +305,6 @@ header .icons .dropdown-content {
 	padding: 5rem 0;
 	padding-top: 1rem;
 	line-height: 1.5;
-}
-
-/*Icone*/
-
-.icons-container {
-	background: rgb(0, 0, 0) ;
-	display: flex;
-	flex-wrap: wrap;
-	gap: 1.5rem;
-	padding-top: 5rem;
-	padding-bottom: 5rem;
-}
-
-.icons-container .icons{
-	background: rgb(0, 0, 0);
-	border: .1rem solid rgb(255, 255, 255);
-	padding: 2rem;
-	display: flex;
-	align-items: center;
-	flex:1 1 25rem;
-}
-
-.icons-container .icons img{
-	height:5rem;
-	margin-right: 2rem;
-}
-
-.icons-container .icons h3{
-	color: #fff;
-	padding-bottom: .5rem;
-	font-size: 1.5rem;
-}
-
-.icons-container .icons span{
-	color: #999;
-	font-size: 1.3rem;
 }
 
 /*Servizi*/
@@ -457,6 +421,7 @@ header .icons .dropdown-content {
 }
 
 /* Recensioni */
+
 .recensione {
   overflow-x: auto;
   white-space: normal;
@@ -553,8 +518,6 @@ header .icons .dropdown-content {
   font-size: 1rem;
   color: #ccc;
 }
-
-
 
 /*Contatti*/
 
@@ -661,7 +624,6 @@ header .icons .dropdown-content {
 	color: var(--pink);
 }
 
-
 .footer .credit{
 	text-align: center;
 	padding: 1.5rem;
@@ -675,9 +637,6 @@ header .icons .dropdown-content {
 .footer .credit span{
 	color: var(--pink);
 }
-
-
-
 
 
 /*media queries*/
