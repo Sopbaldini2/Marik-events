@@ -2,12 +2,15 @@ package it.uniroma3.siw.model;
 
 import java.util.Objects;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
@@ -28,6 +31,10 @@ public class Recensione {
 	@Min(0)
 	@Max(5)
 	private Integer voto;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "image_id", referencedColumnName = "id")
+	private Image imageR;
 	
 	@ManyToOne
 	private Evento evento;
@@ -71,6 +78,13 @@ public class Recensione {
 		this.voto = voto;
 	}
 	
+	
+	public Image getImageR() {
+		return imageR;
+	}
+	public void setImageR(Image imageR) {
+		this.imageR = imageR;
+	}
 	
 	@Override
 	public int hashCode() {

@@ -35,23 +35,11 @@
 
 		<div class="icons">
 			<a href="/formSearchEventi" class="fas fa-search"></a>
-			<div sec:authorize="isAuthenticated()">
-				<div class="dropdown" id="userDropdown">
-					<span class="user-icon fas fa-user"></span>
-					<div class="dropdown-content" id="dropdownContent">
-						<div class="user-info">
-							<span class="user-name" th:text="${userDetails.username}">Marik Events</span>
-						</div>
-						<a href="/logout">Logout</a>
-					</div>
-					<div class="arrow-down"></div>
-				</div>
-			</div>
-			<a sec:authorize="!isAuthenticated()" href="/login" class="fas fa-user"></a>
 		</div>
 
 
 	</header>
+	
 	<!-- header section ends -->
 
 	<!-- Home section -->
@@ -92,34 +80,6 @@
 		</div>
 	</section>
 	<!-- About us ends -->
-
-	<!-- icons section start -->
-	<section class="icons-container">
-		<div class="icons">
-			<img src="/images/" alt="">
-			<div class="info">
-				<h3>Le Nostre Location</h3>
-				<span>Trova la location che fa per te </span>
-			</div>
-		</div>
-
-		<div class="icons">
-			<img src="/images/" alt="">
-			<div class="info">
-				<h3>Fornitori</h3>
-				<span>Trova i professionisti che trasformeranno i tuoi sogni in realtà </span>
-			</div>
-		</div>
-
-		<div class="icons">
-			<img src="/images/" alt="">
-			<div class="info">
-				<h3>Event Organizer</h3>
-				<span>Tieni tutto sotto controllo per avere il tuo giorno perfetto</span>
-			</div>
-		</div>
-	</section>
-	<!-- icons sectiom ends -->
 
 	<!-- servizi section starts -->
 	<section class="servizi" id="servizi">
@@ -176,76 +136,66 @@
 			<a href="/servizio" class="btn"><i class="fa-solid fa-arrow-right"></i></a>
 		</div>
 	</section>
+	
 	<!-- fornitori section ends -->
 
-	<!-- community section start -->
-
-	<section class="recensione" id="recensione">
-		<h1 class="heading"> Community</h1>
+	<!-- Community Section -->
+	
+	<h1 class="heading">Community</h1>
+    <section class="recensione" id="recensione">
+		
 		<div class="box-container">
-			<div class="box">
+			
+			<!-- Itera sulle recensioni -->
+			<div class="box" th:each="recensione : ${recensioni}">
 				<div class="starts">
-					<i class="fas fa-star"></i>
-					<i class="fas fa-star"></i>
-					<i class="fas fa-star"></i>
-					<i class="fas fa-star"></i>
-					<i class="fas fa-star"></i>
-				</div>
-				<p>Ottimo evento!</p>
-				<div class="user">
-					<img src="images/clienti/mario.png" alt="">
+					<i class="fas fa-star" th:each="star : ${#numbers.sequence(1, recensione.voto)}"></i>
+                </div>
+                <p th:text="${recensione.commento}">Ottimo evento!</p>
+                <div class="user">
+					<div th:if="${recensione.imageR != null}" class="recensione_image">
+						<span><img th:src="@{'/display/image/' + ${recensione.imageR.id}}" alt="Recensione Image"></span>
+			        </div>
+			
+			        <div th:unless="${recensione.imageR != null}" class="recensione_image">
+						<!-- Gestione alternativa nel caso in cui image sia null -->
+                        <img th:src="@{'/images/logoM.png' }" alt="">
+			        </div>
+			        
 					<div class="user-info">
-						<h3>Mario Rossi</h3>
+						<h3 th:text="${recensione.cliente}">Mario Rossi</h3>
 						<span>Happy customer</span>
 					</div>
-				</div>
-				<span class="fas fa-quote-right"></span>
-			</div>
+               </div>
+               
+            </div>
+         </div>
+    </section>
+  
+    <!-- community section ends -->
 
-			<div class="box">
-				<div class="starts">
-					<i class="fas fa-star"></i>
-					<i class="fas fa-star"></i>
-					<i class="fas fa-star"></i>
-					<i class="fas fa-star"></i>
-				</div>
-				<p>Buona esperienza</p>
-				<div class="user">
-					<img src="images/clienti/giulia.png" alt="">
-					<div class="user-info">
-						<h3>Giulia Bianchi</h3>
-						<span>Happy customer</span>
-					</div>
-				</div>
-				<span class="fas fa-quote-right"></span>
-			</div>
-
-		</div>
-	</section>
-
-	<!-- community section ends -->
 
 	<!-- contact section starts -->
-	<section class="contact" id="contact">
-		<h1 class="heading"> <span> Contact </span> us </h1>
-		<div class="row">
-			<form action="https://api.web3forms.com/submit" method="POST">
+	
+    <section class="contact" id="contact">
+		<h1 class="heading"><span>Contact</span> us</h1>
+        <div class="contact-container">
+			<form action="https://api.web3forms.com/submit" method="POST" class="contact-form">
 				<input type="hidden" name="access_key" value="50f856cb-200b-4169-8dd3-8d1ff39e57e7">
-				<input type="text" placeholder="Name" name="name" class="box" required>
-				<input type="email" placeholder="Email" name="email" class="box" required>
-				<input type="number" placeholder="Number" name="number" class="box" required>
-				<textarea name="message" class="box" placeholder="Message" id="" cols="30" rows="10"
-					required></textarea>
-				<input type="submit" value="send message" class="btn">
-			</form>
-
-			<div class="image">
-				<img src="images/logoM.png" alt="">
-			</div>
-		</div>
-
-	</section>
-	<!-- contact section ends -->
+				<input type="text" placeholder="Name" name="name" class="form-input" required>
+				<input type="email" placeholder="Email" name="email" class="form-input" required>
+				<input type="number" placeholder="Number" name="number" class="form-input" required>
+				<input type="text" placeholder="Tipo di evento" name="tipo" class="form-input" required>
+				<textarea name="message" class="form-textarea" placeholder="Message" cols="30" rows="10" required></textarea>
+				<input type="submit" value="Send Message" class="form-btn">
+           </form>
+           <!--<div class="contact-image">
+			   <img src="images/logoM.png" alt="Marika Event's Logo">
+           </div>-->
+       </div>
+    </section>
+    
+    <!-- contact section ends -->
 
 	<!-- footer section starts -->
 	<section class="footer">
@@ -258,12 +208,6 @@
 				<a href="/servizio">Servizi</a>
 				<a href="/recensione">Community</a>
 				<a href="#contact">Contact</a>
-			</div>
-
-			<div class="box">
-				<h3>Extra Links</h3>
-				<a href="/login">My account</a>
-				<a href="/evento">My Event</a>
 			</div>
 
 			<div class="box">

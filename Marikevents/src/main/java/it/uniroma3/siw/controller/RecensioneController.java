@@ -1,6 +1,7 @@
 package it.uniroma3.siw.controller;
 
 import java.security.Principal;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -42,14 +43,12 @@ public class RecensioneController {
 		return "admin/manageRecensione.html";
 	}
 	
-	
-
 	@GetMapping("/recensione")
-	public String getRecensioni(Model model) {
-		Iterable<Recensione> recensioni = recensioneService.findAll();
-		model.addAttribute("recensioni", recensioni);
-		return "recensioni.html";
-	}
+    public String getRecensioni(Model model) {
+        List<Recensione> recensioni = (List<Recensione>) recensioneService.findAll();
+        model.addAttribute("recensioni", recensioni);
+        return "recensioni";
+    }
 	
 	@GetMapping("/admin/recensione/{id}")
     public String deleteRecensione(@PathVariable("id") Long id, Model model) {

@@ -1,5 +1,5 @@
 :root{
-	--gold: rgb(247, 184, 0);	
+	--pink: #e84393;	
 }
 
 *{
@@ -31,12 +31,12 @@ section{
 	color: #fff;
 	padding: 1rem;
 	margin: 2rem 0;
-	/*background: rgba(255, 51, 153, .05);*/
+	background: rgba(255, 51, 153, .05);
 }
 
 
 .heading span{
-	color: var(--gold);
+	color: var(--pink);
 }
 
 .btn{
@@ -51,7 +51,7 @@ section{
 }
 
 .btn:hover{
-	background: var(--gold) ;
+	background: var(--pink) ;
 }
  
 
@@ -76,7 +76,7 @@ header .logo{
 }
 
 header .logo span{
-	color: var(--gold);
+	color: var(--pink);
 }
 
 header .navbar a{
@@ -86,7 +86,7 @@ header .navbar a{
 }
 
 header .navbar a:hover{
-	color: var(--gold);
+	color: var(--pink);
 }
 
 header .icons {
@@ -102,7 +102,7 @@ header .icons a{
 }
 
 header .icons a:hover{
-	color: var(--gold);
+	color: var(--pink);
 }
 
 header #toggler{
@@ -139,7 +139,7 @@ header .fa-bars{
 
 .home .content span{
 	font-size: 3.5rem;
-	color:var(--gold);
+	color:var(--pink);
 	padding: 1rem 0;
 	line-height: 1.5;
 }
@@ -175,7 +175,7 @@ header .icons .dropdown .user-icon {
 /* Cambia il colore dell'icona al passaggio del mouse */
 
 header .icons .dropdown .user-icon:hover {
-    color: var(--gold);
+    color: var(--pink);
 }
 
 /* Stile per il contenitore del nome utente */
@@ -229,7 +229,7 @@ header .icons .dropdown-content a {
 /* Cambia il colore di sfondo e testo al passaggio del mouse sui link */
 
 header .icons .dropdown-content a:hover {
-    background-color: var(--gold);
+    background-color: var(--pink);
     color: #fff;
 }
 
@@ -365,7 +365,7 @@ header .icons .dropdown-content {
 	left:1rem;
 	padding:.7rem 1rem;
 	font-size: 2rem;
-	color:var(--gold);
+	color:var(--pink);
 	background: rgba(255, 51, 153, .05);
 	z-index: 1;
 	border-radius: .5rem;
@@ -404,7 +404,7 @@ header .icons .dropdown-content {
 	line-height:5rem;
 	font-size: 2rem;
 	width: 100%;
-	background: var(--gold);
+	background: var(--pink);
 	color: #fff;
 }
 
@@ -430,7 +430,7 @@ header .icons .dropdown-content {
 
 .servizi .box-container .box .content .price{
 	font-size: 2.5rem;
-	color:var(--gold);
+	color:var(--pink);
 	font-weight: bolder;
 	padding-top:1rem;
 }
@@ -456,111 +456,161 @@ header .icons .dropdown-content {
     transform: translate(-50%, -50%);
 }
 
-/*Recensioni*/
-
-.recensione .box-container{
-	display: flex;
-	flex-wrap: wrap;
-	gap: 1.5rem;
+/* Recensioni */
+.recensione {
+  overflow-x: auto;
+  white-space: normal;
+  padding: 2rem;
+  position: relative;
+  /* Aggiungi uno stile elegante per lo scorrimento */
 }
 
-.recensione .box-container .box{
-	flex:1 1 30rem;
-	box-shadow:0 .5rem 1.5rem rgb(255, 255, 255, .2);
-	border-radius: .5rem;
-	padding:3rem 2rem ;
-	position: relative;
-	border: .1rem solid rgb(255, 255, 255, .1);
+/* Stile della barra di scorrimento (visibile solo quando necessario) */
+.recensione::-webkit-scrollbar {
+  height: 8px; /* Altezza della barra di scorrimento */
 }
 
-.recensione .box-container .box .fa-quote-right{
-	position: absolute;
-	bottom: 3rem;
-	right: 3rem;
-	font-size: 6rem;
-	color: #eee;
+.recensione::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.5); /* Colore della barra di scorrimento */
+  border-radius: 10px; /* Bordi arrotondati */
 }
 
-.recensione .box-container .box p{
-	color: #fff;
-	font-size: 1.5rem;
-	line-height: 1.5rem;
-	padding-top: 2rem;
+.recensione::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.8); /* Colore quando si passa sopra con il mouse */
 }
 
-.recensione .box-container .box .starts i{
-	color: var(--gold);
-	font-size: 2rem;
+.recensione::-webkit-scrollbar-track {
+  background: transparent; /* Sfondo trasparente per il track della barra */
 }
 
-.recensione .box-container .box user{
-	display: flex;
-	align-items: center;
-	padding-bottom: 2rem;
+.recensione .box-container {
+  display: flex;
+  gap: 1.5rem;
+  padding: 1rem 0;
 }
 
-.recensione .box-container .box .user img{
-	height: 6rem;
-	width: 6rem;
-	border-radius: 50%;
-	object-fit: cover;
-	margin-right:1rem;
-	margin-top: 1rem;
+.recensione .box-container .box {
+  flex: 0 0 auto;
+  box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .3);
+  border-radius: .75rem;
+  padding: 2rem;
+  /*position: relative;*/
+  border: .1rem solid rgba(255, 255, 255, .1);
+  /*min-width: 28rem;*/
+  background-color: #333;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: auto; /* Permette alla box di adattarsi al contenuto */
+  max-width: 40rem; /* Limita la larghezza massima */
+  box-sizing: border-box;
 }
 
-.recensione .box-container .box .user h3{
-	font-size: 2rem;
-	color: #999;
+.recensione .box-container .box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 .75rem 2rem rgba(0, 0, 0, .4);
 }
 
-.recensione .box-container .box .user span{
-	font-size: 1rem;
-	color: #999;
+.recensione .box-container .box .fa-quote-right {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  font-size: 4rem;
+  color: rgba(255, 255, 255, .2);
 }
+
+.recensione .box-container .box p {
+  color: #fff;
+  font-size: 1.3rem;
+  line-height: 1.6rem;
+  padding-top: 1.5rem;
+  overflow-wrap: break-word; /* Gestisce il testo lungo */
+}
+
+.recensione .box-container .box .starts i {
+  color: #ffd700; /* Colore oro per le stelle */
+  font-size: 2rem;
+}
+
+.recensione .box-container .box .user {
+  display: flex;
+  align-items: center;
+  padding-top: 1.5rem;
+}
+
+.recensione .box-container .box .user img {
+  height: 5rem;
+  width: 5rem;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 1rem;
+}
+
+.recensione .box-container .box .user h3 {
+  font-size: 1.7rem;
+  color: #fff;
+}
+
+.recensione .box-container .box .user span {
+  font-size: 1rem;
+  color: #ccc;
+}
+
+
 
 /*Contatti*/
 
-.contact .row{
-    display:flex;
-    flex-wrap:wrap-reverse;
-    gap:1.5rem;
-    align-items: center;
+.contact {
+    background-color: #000;
+    color: #fff;
+    padding: 2rem 0;
 }
 
-.contact .row form{
-    flex:1 1 40rem;
-    padding:2rem 2.5rem;
-    box-shadow: 0 .5rem 1.5rem rgb(255, 255, 255);
-    border: .1rem solid rgb(255, 255, 255);
-    background-repeat: rgb(0, 0, 0);
-    border-radius: .5rem;
+.contact-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
 }
 
-.contact .row .image{
-    flex:1 1 40rem;
+.contact-form {
+    flex: 1;
+    min-width: 300px;
+    background-color: #222;
+    padding: 2rem;
+    border-radius: 8px;
 }
 
-.contact .row .image img{
+.form-input, .form-textarea {
     width: 100%;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border: none;
+    border-radius: 4px;
+    background-color: #333;
+    color: #fff;
 }
 
-.contact .row form .box{
-    padding:1rem;
-    font-size:1.7rem;
-    color:rgb(0, 0, 0);
-    text-transform: none;
-    border: .1rem solid rgb(255, 255, 255);
-    border-radius: .5rem;
-    margin: .7rem 0;
+.form-textarea {
+    resize: vertical;
 }
 
-.contact .row form .box:focus{
-    border-color: var(--gold);
+.form-btn {
+    width: 100%;
+    padding: 1rem;
+    background-color: #d4af37; /* Gold color */
+    border: none;
+    border-radius: 4px;
+    color: #000;
+    font-size: 1rem;
+    cursor: pointer;
 }
 
-.contact .row form textarea{
-    height: 15rem;
-    resize: none;
+.contact-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
 }
 
 /*Footer*/
@@ -591,7 +641,7 @@ header .icons .dropdown-content {
 }
 
 .footer .box-container .box a:hover{
-	color: var(--gold);
+	color: var(--pink);
 	text-decoration:underline ;
 }
 
@@ -608,7 +658,7 @@ header .icons .dropdown-content {
 }
 
 .footer .box-container .box2 i:hover{
-	color: var(--gold);
+	color: var(--pink);
 }
 
 
@@ -623,9 +673,8 @@ header .icons .dropdown-content {
 }
 
 .footer .credit span{
-	color: var(--gold);
+	color: var(--pink);
 }
-
 
 
 

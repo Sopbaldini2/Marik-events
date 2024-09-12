@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import it.uniroma3.siw.model.Credentials;
 import it.uniroma3.siw.service.AmministratoreService;
 import it.uniroma3.siw.service.CredentialsService;
+import it.uniroma3.siw.service.RecensioneService;
 import it.uniroma3.siw.model.Amministratore;
 
 import jakarta.validation.Valid;
@@ -24,6 +25,9 @@ public class AuthenticationController {
 
 	@Autowired
 	private CredentialsService credentialsService;
+	
+	@Autowired
+    private RecensioneService recensioneService;
 
     @Autowired
 	private AmministratoreService userService;
@@ -42,6 +46,7 @@ public class AuthenticationController {
 
 	@GetMapping(value = "/") 
 	public String index(Model model) {
+		model.addAttribute("recensioni", recensioneService.findAll());
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		if (authentication instanceof AnonymousAuthenticationToken) {
 	        return "index.html";
